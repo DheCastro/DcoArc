@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template_principal.xhtml" >
+
+	<ui:define name="corpo">
+		<h:form>
+
+			<div class="page-header">
+				<h1>
+					Usuário <small>Listar</small>
+				</h1>
+			</div>
+
+			<div class="acoes-principais">
+				<div class="btn-group" role="group">
+					<h:commandButton value="Novo" action="novo"
+						styleClass="btn btn-primary">
+					</h:commandButton>
+					<h:commandButton value="Listar" action="#{usuarioBean.lista}"
+						styleClass="btn btn-primary">
+						<f:ajax render="@form" />
+					</h:commandButton>
+				</div>
+			</div>
+
+			<t:saveState value="#{usuarioBean.usuarios}" />
+
+			<h:dataTable id="tbl" value="#{usuarioBean.usuarios}" var="usuario" rows="5" 
+			             style="margin-bottom:20px" styleClass="table table-bordered table-condensed table-striped">
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{usuario.id}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{usuario.nome}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Login" />
+					</f:facet>
+					<h:outputText value="#{usuario.login}" />
+				</h:column>
+
+				<h:column headerText="Ações">
+
+					<div>
+						<h:commandLink value="remover"
+							action="#{usuarioBean.remove(usuario)}">
+							<f:ajax render="@form" execute="@form" />
+						</h:commandLink>
+						&#160;
+						<h:commandLink value="editar" action="edita">
+							<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+								value="#{usuario}"></f:setPropertyActionListener>
+						</h:commandLink>
+					</div>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template_principal.xhtml" >
+	
+	<ui:define name="corpo">
+		<div class="page-header">
+			<h1>
+				Usuário <small>Edição</small>
+			</h1>
+		</div>
+		<h:form>
+
+			<t:saveState id="ss" value="#{usuarioBean.usuario}" />
+
+			<div class="ui-grid ui-grid-responsive">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-8">
+						<h:outputLabel value="Nome" for="nome" />
+						<h:inputText label="Nome" id="nome"
+							value="#{usuarioBean.usuario.nome}"
+							styleClass="form-control input-md" required="true" />
+					</div>
+				</div>
+
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-3">
+						<h:outputLabel value="Login" for="login" />
+						<h:inputText label="Login" id="login" readonly="true"
+							value="#{usuarioBean.usuario.login}"
+							styleClass="form-control input-md" required="true">
+							<f:validateLength minimum="4" />
+							<f:validateRegex pattern="[a-zA-Z]+" />
+						</h:inputText>
+					</div>
+				</div>
+
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-3">
+						<h:outputLabel value="Senha" for="senha" />
+						<h:inputSecret label="Senha" id="senha"
+							value="#{usuarioBean.usuario.senha}"
+							styleClass="form-control input-md" required="true">
+							<f:validator validatorId="senhaForte" />
+						</h:inputSecret>
+					</div>
+				</div>
+			</div>
+
+			<div class="acoes-principais">
+				<div class="btn-group" role="group">
+					<h:commandButton value="Voltar" action="lista" immediate="true"
+						styleClass="btn btn-primary">
+					</h:commandButton>
+					<h:commandButton value="Salvar" action="#{usuarioBean.atualiza}"
+						styleClass="btn btn-primary">
+						<f:ajax render="@form" execute="@form"/>
+					</h:commandButton>
+				</div>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

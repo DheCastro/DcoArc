@@ -1,0 +1,11 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+Ambiente Novo (Spring)
+Eclipse Mars
+JDK 1.8_73
+Tomcat 7.0.52
+JSF (Mojarra 2.2.6)
+Spring 3.2.8
+Primefaces 5.3
+Bootstrap 3.3.6

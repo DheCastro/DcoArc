@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/layout/template_login.xhtml">
+
+	<ui:define name="cabecalho"></ui:define>
+
+	<ui:define name="corpo">
+
+		<div class="container">
+
+			<div class="row" id="pwd-container">
+				<div class="col-md-4"></div>
+
+				<div class="col-md-4">
+					<section class="login-form">
+					<h:form method="post" action="#" role="login">
+						<h:graphicImage library="imagens" name="arc_logo_tot.png" styleClass="img-responsive" />
+
+						<p:inputText label="Login" id="login"
+							styleClass="form-control input-lg" value="#{loginBean.login}"
+							required="true" pt:placeholder="Login" />
+
+						<p:password label="Senha" id="senha"
+							styleClass="form-control input-lg" value="#{loginBean.senha}"
+							required="true" pt:placeholder="Senha" />
+
+						<p:commandButton value="Logar" action="#{loginBean.logar}"
+							styleClass="btn btn-success btn-block" />
+						<div>
+							<a href="#">Esqueceu a senha?</a>
+						</div>
+
+					</h:form>
+
+					<div class="form-links">
+						<a href="#">Precisa de suporte? Entre em contato!</a>
+					</div>
+					</section>
+				</div>
+
+				<div class="col-md-4"></div>
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</ui:define>
+
+	<ui:define name="rodape"></ui:define>
+
+</ui:composition>
+</html>

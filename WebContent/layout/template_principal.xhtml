@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                             "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Título da aplicação AQUI</title>
+		<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
+		<h:outputScript library="bootstrap" name="bootstrap.js" />
+		<h:outputStylesheet library="css" name="app.css" />
+		<h:outputStylesheet library="css" name="rodape.css" />
+	</h:head>
+	<h:body>
+
+		<!-- Cabecalho -->
+		<div id="cabecalho">
+			<ui:insert name="cabecalho">
+				<ui:include src="menu.xhtml" />
+			</ui:insert>
+		</div>
+
+		<p:growl autoUpdate="true" />
+
+		<!-- Corpo -->
+		<div id="corpo">
+			<div class="container custom-top">
+				<ui:insert name="corpo" />
+			</div>
+		</div>
+
+		<!-- Rodape -->
+		<div id="rodape">
+			<ui:insert name="rodape">
+				<footer class="footer">
+			      <div class="container">
+			        <p class="text-muted">#{rodape}</p>
+			      </div>
+			    </footer>
+	    	</ui:insert>
+	    </div>
+	</h:body>
+</ui:composition>

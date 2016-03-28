@@ -9,11 +9,12 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Título da aplicação AQUI</title>
+		<title><h:outputText value="#{config.titulo}" /></title>
 		<h:outputStylesheet library="bootstrap" name="bootstrap.css" />
 		<h:outputScript library="bootstrap" name="bootstrap.js" />
 		<h:outputStylesheet library="css" name="app.css" />
 		<h:outputStylesheet library="css" name="rodape.css" />
+		<f:loadBundle basename="br.com.triadworks.bugtracker.resources.Config" var="config"/>
 	</h:head>
 	<h:body>
 
@@ -38,7 +39,7 @@
 			<ui:insert name="rodape">
 				<footer class="footer">
 			      <div class="container">
-			        <p class="text-muted">#{rodape}</p>
+			        <p class="text-muted"><h:outputText value="#{config.rodape}" /></p>
 			      </div>
 			    </footer>
 	    	</ui:insert>
